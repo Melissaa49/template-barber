@@ -1,0 +1,16 @@
+:root {
+  --wood-dark: #2a1c14;
+  --wood-mid: #3b271b;
+  --leather-dark: #1b1b1b;
+
+  --gold: #c9a36a;
+  --gold-soft: #e2c89b;
+
+  --text-main: #f3e9d9;
+  --text-muted: #cbb89e;
+
+  --radius-soft: 14px;
+  --radius-strong: 18px;
+
+  --shadow-soft: 0 8px 30px rgba(0,0,0,.45);
+}
