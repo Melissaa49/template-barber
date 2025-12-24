@@ -1,8 +1,8 @@
 <template>
   <div class="transition">
-    <button class="cta">
+    <NuxtLink to="/rendez-vous" class="cta">
       Prendre rendez-vous
-    </button>
+    </NuxtLink>
   </div>
 </template>
 
@@ -22,20 +22,28 @@
   box-shadow: inset 0 10px 20px rgba(0,0,0,.6);
 }
 
+/* CTA = LIEN STYLÉ COMME UN BOUTON */
 .cta {
   position: absolute;
   top: -22px;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 14px 44px;
   font-size: 0.95rem;
   letter-spacing: 0.05em;
+  text-decoration: none;
 
   color: var(--gold-soft);
 
   /* BOIS */
   background-image: url('/images/bois.png');
   background-size: 420px;
-clip-path: polygon(
+
+  /* FORME RECTANGULAIRE DÉCOUPÉE */
+  clip-path: polygon(
     6px 0%,
     calc(100% - 6px) 0%,
     100% 6px,
@@ -45,19 +53,20 @@ clip-path: polygon(
     0% calc(100% - 6px),
     0% 6px
   );
-  /* FORME RECTANGULAIRE */
-  border-radius: 6px; /* très léger, pas arrondi */
+
+  border-radius: 6px;
   border: 1px solid rgba(201,163,106,.65);
 
-  /* DOUBLE RELIEF (plaque bois) */
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.25),   /* lumière haute */
-    inset 0 -2px 4px rgba(0,0,0,.45),      /* creux bas */
-    inset 0 0 0 1px rgba(0,0,0,.35),       /* bord intérieur */
-    0 10px 24px rgba(0,0,0,.6);            /* ombre externe */
+    inset 0 1px 0 rgba(255,255,255,.25),
+    inset 0 -2px 4px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(0,0,0,.35),
+    0 10px 24px rgba(0,0,0,.6);
 
   background-blend-mode: multiply;
 }
+
+/* ORNEMENTS */
 .cta::before,
 .cta::after {
   position: absolute;
@@ -78,11 +87,11 @@ clip-path: polygon(
   right: 18px;
 }
 
+/* EFFET PRESSÉ */
 .cta:active {
   transform: translateY(2px);
   box-shadow:
     inset 0 2px 4px rgba(0,0,0,.6),
     0 6px 14px rgba(0,0,0,.5);
 }
-
 </style>
