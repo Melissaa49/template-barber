@@ -26,6 +26,10 @@
         <NuxtLink to="/" @click="close">Accueil</NuxtLink>
         <NuxtLink to="/#salon" @click="close">Le salon</NuxtLink>
         <NuxtLink to="/#prestations" @click="close">Prestations</NuxtLink>
+        <NuxtLink to="/gallery" @click="open = false">
+  Galerie
+</NuxtLink>
+
         <NuxtLink to="/#avis" @click="close">Avis clients</NuxtLink>
 
         <div class="menu-divider"></div>

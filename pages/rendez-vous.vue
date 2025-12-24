@@ -3,44 +3,70 @@
     <h1 class="title">Prendre rendez-vous</h1>
 
     <div class="hero">
-      <img src="/images/salon.jpeg" />
+      <img src="/images/salon.jpeg" alt="Salon barbershop" />
     </div>
 
+    <!-- PRESTATION -->
     <div class="block">
-      <label> Prestation</label>
-      <select v-model="service">
-        <option disabled value="">Choisissez une prestation</option>
-        <option>Coupe + barbe</option>
-        <option>Coupe homme</option>
-        <option>Barbe</option>
-      </select>
+      <label>Prestation</label>
+      <div class="select-wrapper">
+        <select v-model="service">
+          <option disabled value="">Choisissez une prestation</option>
+          <option>Coupe + barbe</option>
+          <option>Coupe homme</option>
+          <option>Barbe</option>
+        </select>
+
+        <span class="fake-value">
+          {{ service || 'Choisissez une prestation' }}
+        </span>
+        <span class="chevron">▾</span>
+      </div>
     </div>
 
+    <!-- SALON -->
     <div class="block">
-      <label> Salon</label>
-      <select v-model="salon">
-        <option disabled value="">Choisissez un salon</option>
-        <option>Centre-ville — Angers</option>
-        <option>Lafayette — Angers</option>
-      </select>
+      <label>Salon</label>
+      <div class="select-wrapper">
+        <select v-model="salon">
+          <option disabled value="">Choisissez un salon</option>
+          <option>Centre-ville — Angers</option>
+          <option>Lafayette — Angers</option>
+        </select>
+
+        <span class="fake-value">
+          {{ salon || 'Choisissez un salon' }}
+        </span>
+        <span class="chevron">▾</span>
+      </div>
     </div>
 
+    <!-- JOUR -->
     <div class="block">
-      <label> Jour</label>
+      <label>Jour</label>
       <input type="date" v-model="day" />
     </div>
 
+    <!-- HEURE -->
     <div v-if="day" class="block">
-      <label> Heure</label>
-      <select v-model="hour">
-        <option disabled value="">Choisissez une heure</option>
-        <option>10:00</option>
-        <option>11:30</option>
-        <option>14:00</option>
-        <option>16:30</option>
-      </select>
+      <label>Heure</label>
+      <div class="select-wrapper">
+        <select v-model="hour">
+          <option disabled value="">Choisissez une heure</option>
+          <option>10:00</option>
+          <option>11:30</option>
+          <option>14:00</option>
+          <option>16:30</option>
+        </select>
+
+        <span class="fake-value">
+          {{ hour || 'Choisissez une heure' }}
+        </span>
+        <span class="chevron">▾</span>
+      </div>
     </div>
 
+    <!-- CTA -->
     <NuxtLink
       to="/confirmation"
       class="cta"
@@ -64,8 +90,11 @@ const isValid = computed(() =>
 )
 </script>
 
+
 <style scoped>
-.booking { text-align: center; }
+.booking {
+  text-align: center;
+}
 
 .title {
   font-size: 1.6rem;
@@ -86,34 +115,72 @@ const isValid = computed(() =>
 }
 
 label {
-  font-size: .85rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 6px;
   display: block;
 }
 
-select,
-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid rgba(120,90,60,.4);
-  background: linear-gradient(#efe4cf, #e1d2b6);
+/* ===== SELECT PREMIUM (iOS SAFE) ===== */
+.select-wrapper {
+  position: relative;
 }
+
+.select-wrapper select {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.fake-value {
+  display: block;
+  padding: 14px 44px 14px 14px;
+
+  background: linear-gradient(#efe4cf, #e1d2b6);
+  border: 1px solid rgba(120,90,60,.45);
+  border-radius: 6px;
+
+  color: #3b2a1a;
+  font-size: 0.95rem;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    0 6px 18px rgba(0,0,0,.35);
+}
+
+.chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(120,90,60,.8);
+  font-size: 1rem;
+}
+
+/* DATE */
+input[type="date"] {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(120,90,60,.45);
+  background: linear-gradient(#efe4cf, #e1d2b6);
+  color: #3b2a1a;
+}
+
+/* ===== CTA BOIS (TON STYLE) ===== */
 .cta {
   margin-top: 28px;
   display: block;
   padding: 14px;
-
-  text-decoration: none;
   text-align: center;
+  text-decoration: none;
 
-  /* TEXTE PLUS LISIBLE */
-  color: #f2e3c8; /* plus clair que gold-soft */
+  color: #f2e3c8;
   font-weight: 600;
   letter-spacing: 0.06em;
 
-  /* léger relief texte */
   text-shadow:
     0 1px 1px rgba(0,0,0,.8),
     0 -1px 0 rgba(255,255,255,.15);
@@ -132,8 +199,9 @@ input {
 }
 
 .cta.disabled {
-  opacity: .4;
+  opacity: 0.4;
   pointer-events: none;
 }
+
 
 </style>
